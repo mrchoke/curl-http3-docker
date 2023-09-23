@@ -61,6 +61,13 @@ docker rmi mrchoke/curl-http3
 
 ## How to build
 
+### Clone
+
+```
+git clone https://github.com/mrchoke/curl-http3-docker
+cd curl-http3-docker
+```
+
 ### On your machine
 
 ```
