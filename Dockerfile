@@ -11,9 +11,9 @@ WORKDIR /app
 ARG CC=clang
 ARG CXX=clang++
 
-RUN git clone --depth 1 -b openssl-3.0.10+quic https://github.com/quictls/openssl \
+RUN git clone --depth 1 -b openssl-3.1.2+quic https://github.com/quictls/openssl \
   && cd openssl \
-  && ./config enable-tls1_3 no-shared --libdir=/usr/local/lib \
+  && ./config enable-tls1_3 no-shared --libdir=/usr/local/lib '-Wl,-rpath,/usr/local/lib' \
   && make -j$(nproc) \
   && make install_sw \
   && cd ..
@@ -38,7 +38,7 @@ RUN git clone --depth 1 https://github.com/nghttp2/nghttp2 \
   && cd nghttp2 \
   && git submodule update --init \
   && autoreconf -fi \
-  && CC=clang ./configure --with-mruby --with-neverbleed --enable-http3 --with-libbpf --enable-static --disable-shared \
+  && ./configure --with-mruby --with-neverbleed --enable-http3 --with-libbpf --enable-static --disable-shared \
   && make -j$(nproc) \
   && make install \
   && cd ..
