@@ -13,10 +13,10 @@ docker run --rm -it  mrchoke/curl-http3
 #### Output
 
 ```
-curl 8.4.0-DEV (aarch64-unknown-linux-gnu) libcurl/8.4.0-DEV OpenSSL/3.0.10 zlib/1.2.13 nghttp2/1.57.0-DEV ngtcp2/0.20.0-DEV nghttp3/0.16.0-DEV
+curl 8.6.1-DEV (aarch64-unknown-linux-gnu) libcurl/8.6.1-DEV OpenSSL/3.2.0 zlib/1.2.13 brotli/1.1.0 nghttp2/1.60.0-DEV nghttp3/1.2.0-DEV
 Release-Date: [unreleased]
-Protocols: dict file ftp ftps gopher gophers http https imap imaps mqtt pop3 pop3s rtsp smb smbs smtp smtps telnet tftp
-Features: alt-svc AsynchDNS HSTS HTTP2 HTTP3 HTTPS-proxy IPv6 Largefile libz NTLM NTLM_WB SSL threadsafe TLS-SRP UnixSockets
+Protocols: dict file ftp ftps gopher gophers http https imap imaps ipfs ipns mqtt pop3 pop3s rtsp smb smbs smtp smtps telnet tftp
+Features: alt-svc AsynchDNS brotli HSTS HTTP2 HTTP3 HTTPS-proxy IPv6 Largefile libz NTLM SSL threadsafe TLS-SRP UnixSockets
 ```
 
 ### Use
@@ -77,5 +77,5 @@ docker build -t image:tag .
 ### For multiple plateform
 
 ```
-docker buildx build --platform linux/amd64,linux/arm64 --push  -t your_repo/image:tag --build-arg BUILDKIT_MULTI_PLATFORM=1
+docker buildx build --platform linux/amd64,linux/arm64 --push  -t your_repo/image:tag
 ```
