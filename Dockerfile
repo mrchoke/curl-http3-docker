@@ -20,6 +20,7 @@ RUN git clone --depth 1 -b openssl-3.1.2+quic https://github.com/quictls/openssl
 
 RUN git clone --depth 1 https://github.com/ngtcp2/nghttp3 \
   && cd nghttp3 \
+  && git submodule update --init \
   && autoreconf -fi \
   && ./configure  --enable-lib-only --enable-static --disable-shared \
   && make -j$(nproc)  \
@@ -56,6 +57,7 @@ RUN git clone  --depth 1 https://github.com/curl/curl \
   --enable-alt-svc \
   --enable-static \
   --disable-ldap \
+  --without-libpsl \
   --enable-ipv6 \
   --enable-unix-sockets \
   && make -j$(nproc) V=1 LDFLAGS="-static -all-static -L/usr/local/lib" \
